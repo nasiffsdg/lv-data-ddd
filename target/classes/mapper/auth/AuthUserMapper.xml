@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lv.infrastructure.auth.dao.AuthUserMapper">
+
+    <resultMap id="BaseResultMap" type="com.lv.domain.auth.AuthUserDo">
+        <id property="id" column="id" jdbcType="BIGINT"/>
+        <result property="userNo" column="user_no" jdbcType="VARCHAR"/>
+        <result property="userName" column="user_name" jdbcType="VARCHAR"/>
+        <result property="userPwd" column="user_pwd" jdbcType="VARCHAR"/>
+        <result property="mall" column="e_mall" jdbcType="VARCHAR"/>
+        <result property="gender" column="gender" jdbcType="TINYINT"/>
+        <result property="phoneNum" column="phone_num" jdbcType="VARCHAR"/>
+        <result property="headPicture" column="head_picture" jdbcType="VARCHAR"/>
+        <result property="createTime" column="create_time" jdbcType="TIMESTAMP"/>
+        <result property="updateTime" column="update_time" jdbcType="TIMESTAMP"/>
+        <result property="isDeleted" column="is_deleted" jdbcType="TINYINT"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        id
+        ,user_no,user_name,
+        user_pwd,e_mall,gender,
+        phone_num,head_picture,create_time,
+        update_time,is_deleted
+    </sql>
+
+    <select id="selectByUsername" resultMap="BaseResultMap">
+        select Base_Column_List
+        from lv_auth_user
+        where user_name = #{userName};
+    </select>
+    <select id="selectUserById" resultType="com.lv.domain.auth.AuthUserDo" parameterType="java.lang.Long">
+
+    </select>
+</mapper>

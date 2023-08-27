@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lv.infrastructure.auth.dao.AuthPowerMapper">
+
+    <resultMap id="BaseResultMap" type="com.lv.domain.auth.entity.AuthPowerDo">
+            <id property="id" column="id" jdbcType="BIGINT"/>
+            <result property="powerNo" column="power_no" jdbcType="VARCHAR"/>
+            <result property="powerName" column="power_name" jdbcType="VARCHAR"/>
+            <result property="frontUrl" column="front_url" jdbcType="VARCHAR"/>
+            <result property="beheadUrl" column="behead_url" jdbcType="VARCHAR"/>
+            <result property="createTime" column="create_time" jdbcType="TIMESTAMP"/>
+            <result property="updateTime" column="update_time" jdbcType="TIMESTAMP"/>
+            <result property="isDeleted" column="is_deleted" jdbcType="TINYINT"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        id,power_no,power_name,
+        front_url,behead_url,create_time,
+        update_time,is_deleted
+    </sql>
+</mapper>
