@@ -20,8 +20,4 @@ public interface ResponseCode {
      * 未授权
      */
     Integer UNAUTHORIZED = 401;
-    /**
-     * 无权限
-     */
-    Integer FORBIDDEN = 403;
 }

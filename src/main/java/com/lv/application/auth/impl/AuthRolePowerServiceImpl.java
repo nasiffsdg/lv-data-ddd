@@ -1,6 +1,6 @@
 package com.lv.application.auth.impl;
 
-import com.lv.service.AuthRolePowerService;
+import com.lv.application.auth.AuthRolePowerService;
 import org.springframework.stereotype.Service;
 
 /**
@@ -9,7 +9,7 @@ import org.springframework.stereotype.Service;
 * @createDate 2023-07-14 00:56:19
 */
 @Service
-public class AuthRolePowerServiceImpl implements AuthRolePowerService{
+public class AuthRolePowerServiceImpl implements AuthRolePowerService {
 
 }
 

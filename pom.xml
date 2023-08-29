@@ -29,6 +29,7 @@
         <actuator.version>3.0.7</actuator.version>
         <jwt.version>4.4.0</jwt.version>
         <code.version>1.16.0</code.version>
+        <integration.vsersion>6.1.1</integration.vsersion>
         <!-- 数据库依赖 -->
         <mysql-connector.version>8.0.33</mysql-connector.version>
         <mybatis.version>3.0.1</mybatis.version>
@@ -77,6 +78,10 @@
             <artifactId>spring-boot-starter-actuator</artifactId>
             <version>${actuator.version}</version>
             <scope>compile</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-mail</artifactId>
         </dependency>
         <!-- dubbo -->
         <dependency>
@@ -214,6 +219,12 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-integration</artifactId>
+        </dependency>
+        <!--分布式锁-->
+        <dependency>
+            <groupId>org.springframework.integration</groupId>
+            <artifactId>spring-integration-redis</artifactId>
+            <version>${integration.vsersion}</version>
         </dependency>
     </dependencies>
 

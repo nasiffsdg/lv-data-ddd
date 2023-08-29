@@ -15,4 +15,9 @@ public class AuthCacheNames {
      * 用户信息缓存key
      */
     public static final String USER_KEY = AUTH_PREFIX+"user";
+    /**
+     * 用户验证码缓存key
+     */
+    public static final String CODE_KEY = AUTH_PREFIX+"code";
+
 }

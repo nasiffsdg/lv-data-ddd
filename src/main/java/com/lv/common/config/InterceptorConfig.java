@@ -1,6 +1,5 @@
 package com.lv.common.config;
 
-import com.lv.common.interceptor.CrossInterceptor;
 import com.lv.common.interceptor.JwtInterceptor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -24,15 +23,10 @@ public class InterceptorConfig extends WebMvcConfigurationSupport {
         return new JwtInterceptor();
     }
 
-    @Bean
-    public CrossInterceptor crossInterceptor(){
-        return new CrossInterceptor();
-    }
+
     @Override
     protected void addInterceptors(InterceptorRegistry registry) {
 
-        registry.addInterceptor(crossInterceptor())
-                .addPathPatterns("/**");
         registry.addInterceptor(getJwtInterceptor())
                 .excludePathPatterns("/auth/user/**")
                 .addPathPatterns("/**");   //其他接口保护 token验证

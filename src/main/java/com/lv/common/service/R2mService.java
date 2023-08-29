@@ -1,6 +1,6 @@
 package com.lv.common.service;
 
-import com.lv.constant.CacheConstant;
+import com.lv.common.constants.CacheConstant;
 import jakarta.annotation.Resource;
 import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
@@ -107,22 +107,21 @@ public class R2mService {
      * @param key 键
      * @return 值
      */
-    @SuppressWarnings("unchecked")
-    public <T> T get(String key) {
+    public Object get(String key) {
         if (key.contains(" ") ){
             logger.error("缓存key不能包含空格");
         }
-        return (T)redisTemplate.opsForValue().get(key);
+        return redisTemplate.opsForValue().get(key);
     }
 
     /**
      * 普通缓存放入并设置时间
-     * @param key 键
+     *
+     * @param key   键
      * @param value 值
-     * @param time 时间(秒) time要大于0 如果time小于等于0 将设置无限期
-     * @return true成功 false 失败
+     * @param time  时间(秒) time要大于0 如果time小于等于0 将设置无限期
      */
-    public boolean set(String key, Object value, long time) {
+    public void set(String key, Object value, long time) {
         if (key.contains(" ")) {
             logger.error("缓存key不能包含空格");
         }
@@ -133,11 +132,9 @@ public class R2mService {
             else {
                 redisTemplate.opsForValue().set(key, value);
             }
-            return true;
         }
         catch (Exception e) {
             logger.error("Redis opsForValue error: {}", e.getMessage());
-            return false;
         }
     }
 

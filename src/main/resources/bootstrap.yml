@@ -37,6 +37,14 @@ spring:
           max-wait: -1
           max-idle: 8
           min-idle: 0
+  # mail
+  mail:
+    host: smtp.qq.com
+    # 发件人邮箱
+    username: 3486105329@qq.com
+    # 邮箱授权码
+    password: pwlmaroopasbcjei
+    default-encoding: UTF-8
 
 # dubbo
 dubbo:
@@ -57,13 +65,11 @@ logging:
 
 # mybatis
 mybatis:
-  mapper-locations: classpath:**/mapper/*.xml
+  mapper-locations: classpath:**/mapper/**/*.xml
 
 # 临时文件路径
 file:
   tempPath: /Users/lvxueqiang/Documents/workspace/java/lv-data-ddd/src/main/resources/
 
-# JACG 调用链解析配置
-jacg:
-  db:
-    insertBranchSize: 10
+server:
+  port: 10010

@@ -9,7 +9,7 @@ import java.lang.annotation.*;
  * @date 2023/7/14 10:59 PM
  */
 
-@Target(ElementType.METHOD)
+@Target({ElementType.METHOD, ElementType.TYPE})
 @Retention(RetentionPolicy.RUNTIME)
 @Documented
 public @interface IgnoreToken {

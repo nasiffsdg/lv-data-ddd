@@ -4,7 +4,7 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.lv.infrastructure.auth.dao.AuthUserRoleMapper">
 
-    <resultMap id="BaseResultMap" type="com.lv.domain.auth.AuthUserRoleDo">
+    <resultMap id="BaseResultMap" type="com.lv.domain.auth.entity.AuthUserRoleDo">
             <id property="id" column="id" jdbcType="BIGINT"/>
             <result property="userId" column="user_id" jdbcType="BIGINT"/>
             <result property="roleId" column="role_id" jdbcType="BIGINT"/>

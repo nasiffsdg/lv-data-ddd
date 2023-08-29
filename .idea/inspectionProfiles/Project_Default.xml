@@ -68,6 +68,13 @@
         <language minSize="147" name="Java" />
       </Languages>
     </inspection_tool>
+    <inspection_tool class="IncorrectHttpHeaderInspection" enabled="true" level="WARNING" enabled_by_default="true">
+      <option name="customHeaders">
+        <set>
+          <option value="X-Powered-By" />
+        </set>
+      </option>
+    </inspection_tool>
     <inspection_tool class="JavadocDeclaration" enabled="true" level="WARNING" enabled_by_default="true">
       <option name="ADDITIONAL_TAGS" value="date,description,createDate,Entity,TableName" />
     </inspection_tool>

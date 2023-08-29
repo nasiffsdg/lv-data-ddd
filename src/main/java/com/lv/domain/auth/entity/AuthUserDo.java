@@ -1,19 +1,19 @@
 package com.lv.domain.auth.entity;
 
-import lombok.Data;
-import lombok.ToString;
-
-import java.io.Serial;
 import java.io.Serializable;
 import java.util.Date;
+import lombok.Data;
+import lombok.EqualsAndHashCode;
+import lombok.ToString;
 
 /**
  * 用户信息表
  * @author lvxueqiang
- * @TableName lv_auth_user
+ * @TableName lv_auth_role_power
  */
 @Data
 @ToString
+@EqualsAndHashCode
 public class AuthUserDo implements Serializable {
     /**
      * 主键id
@@ -38,7 +38,7 @@ public class AuthUserDo implements Serializable {
     /**
      * 用户邮箱
      */
-    private String mall;
+    private String eMail;
 
     /**
      * 性别｛1男/0女｝
@@ -66,10 +66,8 @@ public class AuthUserDo implements Serializable {
     private Date updateTime;
 
     /**
-     * 
+     * 逻辑删除
      */
     private Integer isDeleted;
 
-    @Serial
-    private static final long serialVersionUID = 1L;
 }
