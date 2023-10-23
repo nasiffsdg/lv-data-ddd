@@ -9,7 +9,7 @@
         <result property="userNo" column="user_no" jdbcType="VARCHAR"/>
         <result property="userName" column="user_name" jdbcType="VARCHAR"/>
         <result property="userPwd" column="user_pwd" jdbcType="VARCHAR"/>
-        <result property="eMail" column="e_mall" jdbcType="VARCHAR"/>
+        <result property="email" column="e_mall" jdbcType="VARCHAR"/>
         <result property="gender" column="gender" jdbcType="TINYINT"/>
         <result property="phoneNum" column="phone_num" jdbcType="VARCHAR"/>
         <result property="headPicture" column="head_picture" jdbcType="VARCHAR"/>
@@ -27,7 +27,7 @@
 
     <insert id="insertUser" parameterType="com.lv.domain.auth.entity.AuthUserDo">
         insert into lv_auth_user (user_no, user_name, user_pwd, e_mall)
-        values (#{userNo}, #{userName}, #{userPwd}, #{eMail});
+        values (#{userNo}, #{userName}, #{userPwd}, #{email});
     </insert>
 
     <select id="getUserByUsername" resultMap="BaseResultMap">
@@ -39,6 +39,6 @@
     <select id="getUserByEmail" resultMap="BaseResultMap">
         select <include refid="Base_Column_List"/>
         from lv_auth_user
-        where e_mall = #{username}
+        where e_mall = #{email}
     </select>
 </mapper>

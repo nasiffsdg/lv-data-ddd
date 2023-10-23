@@ -2,6 +2,10 @@ package com.lv.domain.auth.entity;
 
 import java.io.Serializable;
 import java.util.Date;
+
+import com.baomidou.mybatisplus.annotation.IdType;
+import com.baomidou.mybatisplus.annotation.TableId;
+import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
@@ -14,10 +18,12 @@ import lombok.ToString;
 @Data
 @ToString
 @EqualsAndHashCode
+@TableName("lv_auth_user")
 public class AuthUserDo implements Serializable {
     /**
      * 主键id
      */
+    @TableId(value = "id", type = IdType.AUTO)
     private Long id;
 
     /**
@@ -38,7 +44,7 @@ public class AuthUserDo implements Serializable {
     /**
      * 用户邮箱
      */
-    private String eMail;
+    private String email;
 
     /**
      * 性别｛1男/0女｝

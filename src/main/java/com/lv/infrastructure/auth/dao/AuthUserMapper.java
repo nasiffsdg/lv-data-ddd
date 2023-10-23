@@ -1,6 +1,7 @@
 package com.lv.infrastructure.auth.dao;
 
 
+import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.lv.domain.auth.entity.AuthUserDo;
 import org.apache.ibatis.annotations.Mapper;
 
@@ -13,7 +14,7 @@ import java.util.List;
 * @Entity com.lv.domain.auth.entity.AuthUser
 */
 @Mapper
-public interface AuthUserMapper{
+public interface AuthUserMapper extends BaseMapper<AuthUserDo> {
 
     /**
      * 根据用户名获取用户信息
@@ -24,16 +25,17 @@ public interface AuthUserMapper{
 
     /**
      * 根据邮箱获取用户信息
-     * @param username 邮箱
+     * @param email 邮箱
      * @return 用户信息
      */
-    List<AuthUserDo> getUserByEmail(String username);
+    List<AuthUserDo> getUserByEmail(String email);
 
     /**
      * 用户信息插入
      * @param authUserDo 用户信息
      */
     void insertUser(AuthUserDo authUserDo);
+
 }
 
 

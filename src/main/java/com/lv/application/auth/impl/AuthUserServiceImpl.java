@@ -37,7 +37,7 @@ public class AuthUserServiceImpl implements AuthUserService {
     private static final String USER_NO = "userNo-";
 
     @Override
-    public List<AuthUserDo> getUserByUsernameOrEmal(String username) {
+    public List<AuthUserDo> getUserByUsernameOrEmail(String username) {
 
         // 判断是否是邮箱
         if (MatcherUtil.isEmailStrValid(username)){
@@ -52,10 +52,6 @@ public class AuthUserServiceImpl implements AuthUserService {
         // 判断是邮箱是否合法
         if (!MatcherUtil.isEmailStrValid(email)){
             throw new UserAuthException(UserAuthException.EMAIL_FALSE, "邮箱格式不合法");
-        }
-        // 判断用户邮箱是否被注册
-        if (!CollectionUtil.isEmpty(authUserMapper.getUserByEmail(email))){
-            throw new UserAuthException(UserAuthException.EMAIL_FALSE, "用户邮箱已经被注册");
         }
         //判断该用户是否存在验证码
         String userCacheKey = AuthCacheNames.CODE_KEY + CacheConstant.UNION_KEY + email;
@@ -92,8 +88,28 @@ public class AuthUserServiceImpl implements AuthUserService {
         authUserDo.setUserNo(USER_NO + SnowflakeIdUtil.nextIdStr());
         authUserDo.setUserName(registerDto.getUserName());
         authUserDo.setUserPwd(registerDto.getUserPwd());
-        authUserDo.setEMail(registerDto.getMail());
+        authUserDo.setEmail(registerDto.getMail());
         authUserMapper.insertUser(authUserDo);
+    }
+
+    @Override
+    public void updatePassword(RegisterDto registerDto) {
+        // 缓存key
+        String userCacheKey = AuthCacheNames.CODE_KEY + CacheConstant.UNION_KEY + registerDto.getMail();
+        // 获取用户验证码
+        Object userCacheCode = r2mService.get(userCacheKey);
+        if (!registerDto.getCode().equals(String.valueOf(userCacheCode))){
+            throw new UserAuthException(UserAuthException.REGISTER_CODE_FALSE, "验证码有误");
+        }
+        // 用户信息落库
+        List<AuthUserDo> baseUser = authUserMapper.getUserByEmail(registerDto.getMail());
+        if (CollectionUtil.isEmpty(baseUser)){
+            throw new UserAuthException(UserAuthException.USER_INFO_FALSE, "用户邮箱不存在");
+        }
+        AuthUserDo authUserDo = new AuthUserDo();
+        authUserDo.setId(CollectionUtil.getFirst(baseUser).getId());
+        authUserDo.setUserPwd(registerDto.getUserPwd());
+        authUserMapper.updateById(authUserDo);
     }
 }
 

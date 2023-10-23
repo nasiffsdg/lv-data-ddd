@@ -54,7 +54,7 @@ public class AuthUserController {
             throw new UserAuthException(UserAuthException.LOGIN_FALSE, "用户名或者密码为空");
         }
         //2. 验证用户
-        AuthUserDo authUser = CollectionUtil.getFirst(authUserService.getUserByUsernameOrEmal(username));
+        AuthUserDo authUser = CollectionUtil.getFirst(authUserService.getUserByUsernameOrEmail(username));
         if (Objects.isNull(authUser)) {
             log.error("用户名或者密码错误");
             throw new UserAuthException(UserAuthException.LOGIN_FALSE, "用户名或者密码错误");
@@ -92,6 +92,26 @@ public class AuthUserController {
         }
         // 信息注册
         authUserService.register(registerDto);
+        return ResponseInfo.success();
+    }
+
+    /**
+     * 更新用户密码
+     * @param registerDto 用户信息
+     */
+    @IgnoreToken
+    @PostMapping("/updatePassword")
+    public ResponseInfo updatePassword(@RequestBody RegisterDto registerDto) {
+
+        // 参数校验
+        if (StrUtil.isBlank(registerDto.getMail()) ||
+                StrUtil.isBlank(registerDto.getUserPwd()) ||
+                StrUtil.isBlank(registerDto.getCode())||
+                !MatcherUtil.isEmailStrValid(registerDto.getMail())) {
+            throw new UserAuthException(UserAuthException.REGISTER_MESSAGE_FALSE, "邮箱信息有误");
+        }
+        // 信息注册
+        authUserService.updatePassword(registerDto);
         return ResponseInfo.success();
     }
 

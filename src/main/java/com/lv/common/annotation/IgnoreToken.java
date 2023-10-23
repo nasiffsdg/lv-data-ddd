@@ -8,7 +8,6 @@ import java.lang.annotation.*;
  * @version 1.0
  * @date 2023/7/14 10:59 PM
  */
-
 @Target({ElementType.METHOD, ElementType.TYPE})
 @Retention(RetentionPolicy.RUNTIME)
 @Documented

@@ -15,9 +15,12 @@ public class UserAuthException extends BaseException{
     // 邮箱格式异常
     public static final Integer EMAIL_FALSE =  600003;
     // 注册参数有误
-    public static final Integer REGISTER_MESSAGE_FALSE =  600003;
+    public static final Integer REGISTER_MESSAGE_FALSE =  600004;
     // 验证码有误
-    public static final Integer REGISTER_CODE_FALSE =  600004;
+    public static final Integer REGISTER_CODE_FALSE =  600005;
+    // 用户不存在
+    public static final Integer USER_INFO_FALSE =  600006;
+
 
     public UserAuthException(Throwable cause, Integer code, String message) {
         super(cause, code, message);
